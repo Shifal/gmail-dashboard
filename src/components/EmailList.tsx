@@ -3,22 +3,25 @@ import { Email } from "@/types/email";
 
 interface EmailListProps {
   emails: Email[];
+  onSelect: (email: Email) => void;
+  selectedEmailId?: string;
 }
 
-export default function EmailList({ emails }: EmailListProps) {
+export default function EmailList({ emails, onSelect, selectedEmailId }: EmailListProps) {
   if (emails.length === 0) {
-    return <p className="text-gray-500 text-center">No emails found.</p>;
+    return <p className="text-gray-500 text-center mt-4">No emails found.</p>;
   }
 
   return (
-    <div className="grid gap-4">
+    <div className="flex flex-col gap-4 h-[80vh] overflow-y-auto p-2">
       {emails.map((email, idx) => (
         <div
           key={idx}
-          className="p-6 bg-zinc-900/70 rounded-2xl shadow-lg border border-zinc-700
-                     hover:border-purple-500 hover:shadow-purple-500/30 
-                     hover:scale-[1.02] transition-all duration-200
-                     cursor-pointer"
+          className={`p-4 bg-zinc-900/70 rounded-2xl shadow-lg border
+                      ${selectedEmailId === email.id ? "border-purple-500 shadow-purple-500/40" : "border-zinc-700"}
+                      hover:border-purple-500 hover:shadow-purple-500/30
+                      cursor-pointer transition-all duration-200`}
+          onClick={() => onSelect(email)}
         >
           <p className="text-sm text-pink-400">
             <strong>From:</strong> {email.from}

@@ -10,7 +10,6 @@ export interface Email {
   mailedBy?: string;
   signedBy?: string;
   labels: string[];
-
-  // Optional: add body for preview if your backend supports it
   body?: string;
+  attachmentFiles?: Record<string, string>;
 }
