@@ -60,13 +60,19 @@ export default function SearchBar({ onSearch }: SearchBarProps) {
                    placeholder-gray-400 dark:placeholder-gray-500 
                    focus:ring-2 focus:ring-purple-500 outline-none"
       />
-      <button
-        type="submit"
-        className="bg-gradient-to-r from-pink-600 to-purple-600 text-white px-6 py-3 rounded-xl 
-                   font-bold shadow-md hover:shadow-lg hover:from-pink-500 hover:to-purple-500
-                   transition-all duration-200"
-      >
-        Search
+      <button type="submit" className="button">
+        <div className="button-outer">
+          <div
+            className="button-inner 
+                       bg-gradient-to-r from-pink-600 to-purple-600 
+                       hover:from-pink-500 hover:to-purple-500 
+                       text-white px-6 py-3 rounded-xl font-bold 
+                       shadow-md hover:shadow-lg 
+                       transition-all duration-200"
+          >
+            <span>Search</span>
+          </div>
+        </div>
       </button>
     </form>
   );

@@ -5,7 +5,8 @@ import { fetchEmails } from "@/services/emailService";
 import SearchBar from "@/components/SearchBar";
 import EmailList from "@/components/EmailList";
 import ThemeToggle from "@/components/ThemeToggle";
-import EmailSkeleton from "@/components/EmailSkeleton";
+import "@/components/Spinner.css";
+
 
 export default function EmailsPage() {
   const [emails, setEmails] = useState<Email[]>([]);
@@ -31,7 +32,7 @@ export default function EmailsPage() {
           <h1 className="text-4xl font-extrabold text-white dark:text-black flex items-center gap-2">
             <span className="text-5xl">⚡</span> Gmail Dashboard
           </h1>
-          <ThemeToggle /> {/* ✅ toggle button here */}
+          <ThemeToggle />
         </div>
 
         {/* Search */}
@@ -41,10 +42,11 @@ export default function EmailsPage() {
 
         {/* Results */}
         {loading ? (
-          <div className="space-y-4">
-            {[...Array(5)].map((_, i) => (
-              <EmailSkeleton key={i} />
-            ))}
+          <div className="fixed inset-0 flex items-center justify-center bg-black/80 z-50">
+            <div className="scale-75">
+              {/* Your custom loader */}
+              <div className="spinner"></div>
+            </div>
           </div>
         ) : (
           <div className="space-y-4">
