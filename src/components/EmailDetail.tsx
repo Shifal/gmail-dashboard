@@ -46,7 +46,7 @@ export default function EmailDetail({ email }: EmailDetailProps) {
 
       {email.attachmentFiles && Object.entries(email.attachmentFiles).length > 0 && (
         <div className="mt-4">
-          <h3 className="text-white font-semibold mb-2">Attachments:</h3>
+          <h6 className="text-white font-semibold mb-2">Attachments:</h6>
           {Object.entries(email.attachmentFiles).map(([name, base64]) => renderAttachment(name, base64))}
         </div>
       )}
